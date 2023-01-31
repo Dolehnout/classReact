@@ -1,28 +1,24 @@
 /*
 Componente que muestra las actividades (tareas) diarias de una persona
 */
-import React, { useState } from "react";
-import { datos } from "./Objects";
-export default function Homework() {
-  const [listadoTareas, setListadoTareas] = useState(datos);
+import React from "react";
+//import { datos } from "./Objects";
+export default function Homework(props) {
+  //const [listadoTareas, setListadoTareas] = useState(datos);
 
   console.log("Listado de tareas");
   //console.log(listadoTareas);
 
   const eliminarHandlerEvent = (item) => {
-    if (window.confirm("¿Seguro que quieres eliminar?")) {
-      const newList = listadoTareas.filter((tareas) => {
-        return tareas.titulo !== item.titulo;
-      });
-      setListadoTareas(newList);
-    }
+    console.log("datos a eliminar", item)
+    props.eliminarCl(item)
   };
 
   return (
     <div>
       <div className="container">
         <div className="row mt-4">
-          {listadoTareas.map((item, index) => {
+          {props.datos.map((item, index) => {
             return (
               <div className="col-md-4" key={index}>
                 <div className="card mt-4">

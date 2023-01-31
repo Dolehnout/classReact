@@ -3,7 +3,20 @@ import Saludos from "./components/Saludos";
 import Ejercicio from "./components/Ejercicio";
 import Homework from "./components/Homework";
 import TareasAdd from "./components/TareasAdd";
+import { datos } from "./components/Objects";
+import { useState } from "react";
+
 function App() {
+  const [data, setData] = useState(datos);
+  const eliminarClick = (item) => {
+    console.log("eliminando", item.titulo);
+    if (window.confirm("¿Seguro que quieres eliminar?")) {
+      const newList = data.filter((tareas) => {
+        return tareas.titulo !== item.titulo;
+      });
+      setData(newList);
+    }
+  };
   return (
     <div className="App ">
       <header className="App-header back-color">
@@ -11,10 +24,10 @@ function App() {
         <h2 className="App-title">Bienvenidos</h2>
         <Saludos nombre=" Abigail" apellido="Dupont" />
         <Ejercicio nombre="Ángel" edad="15" pasatiempo="no encender la pc" />
-        <Homework></Homework>
+        <Homework datos={data} eliminarCl={eliminarClick} />
         <div className="row">
           <div className="col">
-            <TareasAdd/>
+            <TareasAdd />
           </div>
         </div>
       </header>
