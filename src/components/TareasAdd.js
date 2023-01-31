@@ -1,13 +1,22 @@
 import React from "react";
 
-export default function TareasAdd() {
+export default function TareasAdd({guardarTarea}) {
   const [titulo, setTitulo] = React.useState();
   const [descripcion, setDescripcion] = React.useState();
   const [responsable, setResponsable] = React.useState();
   const [prioridad, setPrioridad] = React.useState();
 
-  const guardarHandler = () => {
+  const guardarHandler = (event) => {
     console.log("guardando");
+    event.preventDefault();
+    const tareaNueva ={
+      "titulo": titulo,
+      "nombre": responsable,
+      "descripcion": descripcion,
+      "prioridad": prioridad,
+    }
+    //console.log("nueva tarea: ", tareaNueva)
+    guardarTarea(tareaNueva)
   };
     const nuevoTitulo = (event) => {
         console.log(event.target.value)
@@ -31,7 +40,7 @@ export default function TareasAdd() {
   return (
     <div className="row mt-4">
       <div className="col">
-        <form onSubmit={() => guardarHandler()}>
+        <form onSubmit={guardarHandler}>
           {" "}
           <div className="card mt-4">
             <div className="card header letter-colorTwo">

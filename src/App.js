@@ -17,6 +17,11 @@ function App() {
       setData(newList);
     }
   };
+
+  const guardarTarea = (tarea) =>{
+    console.log("esta es la nueva tarea", tarea);
+    setData([...data, tarea])
+  }
   return (
     <div className="App ">
       <header className="App-header back-color">
@@ -24,10 +29,13 @@ function App() {
         <h2 className="App-title">Bienvenidos</h2>
         <Saludos nombre=" Abigail" apellido="Dupont" />
         <Ejercicio nombre="Ángel" edad="15" pasatiempo="no encender la pc" />
-        <Homework datos={data} eliminarCl={eliminarClick} />
         <div className="row">
-          <div className="col">
-            <TareasAdd />
+          <div className="col-2">
+            FORMULARIO ADD TAREA
+            <TareasAdd guardarTarea = {guardarTarea}/>
+          </div>
+          <div className="col-10">
+          <Homework datos={data} eliminarCl={eliminarClick} />
           </div>
         </div>
       </header>
