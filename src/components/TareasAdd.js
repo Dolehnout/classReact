@@ -77,7 +77,7 @@ export default function TareasAdd({guardarTarea}) {
                 <label for="titulo">Responsable</label>
                 <input
                   type="text"
-                  class="form-control letter-colorTwo"
+                  class="form-control"
                   id="responsable"
                   name="responsable"
                   placeholder="Responsable de la tarea"
